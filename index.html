@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduek Sampson | Web3 Content Creator & PM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #2a2a2a;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: slideUp 0.8s ease-out 0.1s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #1e40af 100%);
+            padding: 3px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+        }
+
+        .profile-image img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .profile-title {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        .profile-tagline {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .links-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out both;
+        }
+
+        .link-button:nth-child(1) { animation-delay: 0.5s; }
+        .link-button:nth-child(2) { animation-delay: 0.6s; }
+        .link-button:nth-child(3) { animation-delay: 0.7s; }
+
+        .link-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .link-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .link-button:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .link-button-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .link-button-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .link-button-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .link-button-icon {
+            font-size: 18px;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .link-button:hover .link-button-icon {
+            transform: translateX(4px);
+        }
+
+        .cta-section {
+            margin-top: 32px;
+            animation: slideUp 0.8s ease-out 0.8s both;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .cta-button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+            opacity: 0.6;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-4px);
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-section">
+            <div class="profile-image">
+                <svg width="100%" height="100%" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="57" fill="url(#bgGradient)"/>
+                    <text x="60" y="65" font-size="48" font-weight="700" fill="white" text-anchor="middle" font-family="system-ui">ES</text>
+                </svg>
+            </div>
+            <h1 class="profile-name">Eduek Sampson</h1>
+            <p class="profile-title">Web3 Content Creator • Product Manager</p>
+            <p class="profile-tagline">Building the future of decentralized products at NodeOps. Web3 insights, product strategy, and blockchain innovation.</p>
+        </div>
+
+        <div class="links-section">
+            <a href="https://nodeops.network" class="link-button" target="_blank" rel="noopener noreferrer">
+                <div class="link-button-text">
+                    <span class="link-button-label">NodeOps</span>
+                    <span class="link-button-value">nodeops.network</span>
+                </div>
+                <span class="link-button-icon">→</span>
+            </a>
+            <a href="https://x.com/thefineeddie" class="link-button" target="_blank" rel="noopener noreferrer">
+                <div class="link-button-text">
+                    <span class="link-button-label">Twitter / X</span>
+                    <span class="link-button-value">@thefineeddie</span>
+                </div>
+                <span class="link-button-icon">→</span>
+            </a>
+            <a href="https://www.linkedin.com/in/eduek-sampson" class="link-button" target="_blank" rel="noopener noreferrer">
+                <div class="link-button-text">
+                    <span class="link-button-label">LinkedIn</span>
+                    <span class="link-button-value">eduek-sampson</span>
+                </div>
+                <span class="link-button-icon">→</span>
+            </a>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="handleWorkWithMe()">
+                <span>📧 Work with me</span>
+            </button>
+        </div>
+
+        <div class="social-links">
+            <a href="https://x.com/thefineeddie" class="social-icon" target="_blank" rel="noopener noreferrer" title="Twitter/X">𝕏</a>
+            <a href="https://www.linkedin.com/in/eduek-sampson" class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+            <a href="https://nodeops.network" class="social-icon" target="_blank" rel="noopener noreferrer" title="NodeOps">◆</a>
+        </div>
+    </div>
+
+    <script>
+        function handleWorkWithMe() {
+            const email = 'hello@eduek.com';
+            window.location.href = `mailto:${email}?subject=Let's%20Work%20Together&body=Hi%20Eduek,%0A%0AI'd%20love%20to%20discuss%20a%20potential%20collaboration.%0A%0ALooking%20forward%20to%20hearing%20from%20you!`;
+        }
+    </script>
+</body>
+</html>
